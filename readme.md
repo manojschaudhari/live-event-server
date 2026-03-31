@@ -1,3 +1,4 @@
+
 ## Build and Deploy Instructions [Sequence]
 
 ### Checkout main branch
@@ -23,11 +24,11 @@ mvn clean compile -DskipTests
 - Swagger URL ::: http://localhost:8080/swagger-ui/index.html
 - Health URL ::: http://localhost:8080/actuator/health
 
-
+---
 ## Design and Implementation
 ---
 ![arch.png](arch.png)
----
+--
 ### Modules
 ** 1. mock-server **
 * Mock REST APIs
@@ -49,7 +50,8 @@ mvn clean compile -DskipTests
 
 ## Vibe Coding 
 - Generated and validated test cases using ChatGPT
-- 
+
+---  
 
 
 
