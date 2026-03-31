@@ -30,12 +30,12 @@ mvn clean compile -DskipTests
 ![arch.png](arch.png)
 \
 ### Modules
-** 1. mock-server **
+**1. mock-server**
 * Mock REST APIs
 * Cleans message store
 * Starts RocketMQ broker
 
-** 2. live-server **
+**2. live-server**
 * JSON POST Rest Endpoints
 * Cache management (ConcurrentHashmap)
 * MQ publisher
@@ -49,7 +49,58 @@ mvn clean compile -DskipTests
   * Test Cases
 
 ## Request / Response 
-- 
+**1. Mock Server**
+- POST ::: /mock-api/eventScore (eventId) ::: MockEvent with scrore \
+- Request \
+  curl -X 'POST' \
+  'http://localhost:9090/mock-api/eventScore' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '123'
+- Response body \
+  { \
+    "eventId": "123", \
+    "currentScore": "37:15", \
+    "live": true \
+  } \
+  
+**2. Live Server update cache**
+- POST ::: /events/status (eventId,status) ::: Return SUCCESS and Update the live Server Cache \
+- Request \
+  curl -X 'POST' \
+  'http://localhost:8080/events/status' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '{ "eventId": "213123",   "live": false }' \  
+- Response body \
+  {
+   "body": "SUCCESS",
+   "message": "",
+   "statusCode": 200
+  }
+  
+**2. Live Server get All Live**
+- POST ::: /events/live () ::: Return all the live events from Server Cache \
+- Request \
+  curl -X 'POST' \
+  'http://localhost:8080/events/live' \
+  -H 'accept: */*' \
+  -d ''
+- Response body \
+  { \ 
+   "body": [ \
+     { \ 
+       "currentScore": "954:92", \ 
+       "eventId": "213123", \ 
+       "live": true \ 
+     } \ 
+   ], \ 
+   "message": "", \ 
+   "statusCode": 200 \ 
+ } \ 
+
+
+
 
 ## Vibe Coding 
 - Generated and validated test cases using ChatGPT
