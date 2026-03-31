@@ -64,40 +64,21 @@ mvn clean compile -DskipTests
     "live": true \
   } \
   
-**2. Live Server update cache**
-- POST ::: /events/status (eventId,status) ::: Return SUCCESS and Update the live Server Cache \
+**2. Live Server get Event from Cache**
+- POST ::: /events/${eventid} () ::: Return live event from Server Cache \
 - Request \
   curl -X 'POST' \
-  'http://localhost:8080/events/status' \
+  'http://localhost:8080/events/213123' \
   -H 'accept: */*' \
-  -H 'Content-Type: application/json' \
-  -d '{ "eventId": "213123",   "live": false }' \  
-- Response body \
-  {
-   "body": "SUCCESS",
-   "message": "",
-   "statusCode": 200
-  }
-  
-**2. Live Server get All Live**
+  -d ''
+
+**3. Live Server get All Live**
 - POST ::: /events/live () ::: Return all the live events from Server Cache \
 - Request \
   curl -X 'POST' \
   'http://localhost:8080/events/live' \
   -H 'accept: */*' \
   -d ''
-- Response body \
-  { \ 
-   "body": [ \
-     { \ 
-       "currentScore": "954:92", \ 
-       "eventId": "213123", \ 
-       "live": true \ 
-     } \ 
-   ], \ 
-   "message": "", \ 
-   "statusCode": 200 \ 
- } \ 
 
 
 
