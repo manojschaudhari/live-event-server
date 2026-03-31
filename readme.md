@@ -24,11 +24,11 @@ mvn clean compile -DskipTests
 - Swagger URL ::: http://localhost:8080/swagger-ui/index.html
 - Health URL ::: http://localhost:8080/actuator/health
 
----
+
 ## Design and Implementation
----
+\
 ![arch.png](arch.png)
---
+\
 ### Modules
 ** 1. mock-server **
 * Mock REST APIs
@@ -47,6 +47,9 @@ mvn clean compile -DskipTests
   * MQ Consumption error publish on dead-queue.log <<< Can be replayed 
   * Error Handling & Logging
   * Test Cases
+
+## Request / Response 
+- 
 
 ## Vibe Coding 
 - Generated and validated test cases using ChatGPT
